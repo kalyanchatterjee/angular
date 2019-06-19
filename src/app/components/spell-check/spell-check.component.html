@@ -1,0 +1,15 @@
+<h2>Angular Spell-Checker</h2>
+<div class="card card-body mb-3">
+  <form #spellCheckForm="ngForm" (ngSubmit)="onSubmit(spellCheckForm)">
+    <div class="form-group">
+      <label>Type something</label>
+      <input type="text" [(ngModel)]="sentence" class="form-control" name="userInputSentence" [ngClass]="{
+        'is-invalid': userInputSentence.errors && userInputSentence.touched
+      }" #userInputSentence="ngModel" required>
+      <div [hidden]="!userInputSentence.errors?.required" class="invalid-feedback">
+        Must type a sentence
+      </div>
+    </div>
+    <button class="btn btn-dark btn-block" [disabled]="!spellCheckForm.form.valid">Check Spelling</button>
+  </form>
+</div>
